@@ -5,8 +5,11 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.querySelector('.theme-toggle__icon');
 const html = document.documentElement;
 
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
+// Check for saved theme preference or default to system preference
+const savedTheme = localStorage.getItem('theme');
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
 html.setAttribute('data-theme', currentTheme);
 updateThemeIcon(currentTheme);
 
@@ -17,6 +20,14 @@ themeToggle.addEventListener('click', () => {
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        html.setAttribute('data-theme', newTheme);
+        updateThemeIcon(newTheme);
+    }
 });
 
 function updateThemeIcon(theme) {
