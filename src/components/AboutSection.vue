@@ -56,12 +56,11 @@
             </div>
           </div>
 
-          <a href="/portfolio/resume.pdf" class="btn btn--primary">View Resume</a>
+          <a href="/resume.pdf" class="btn btn--primary">View Resume</a>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
