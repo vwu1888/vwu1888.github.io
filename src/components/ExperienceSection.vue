@@ -2,10 +2,10 @@
   <section class="experience" id="experience">
     <div class="container">
       <h2 class="section__title">Experience</h2>
-      
+
       <div class="timeline">
-        <div 
-          v-for="(item, index) in experiences" 
+        <div
+          v-for="(item, index) in experiences"
           :key="index"
           class="timeline__item"
         >
@@ -82,3 +82,80 @@ const experiences: ExperienceItem[] = [
   }
 ]
 </script>
+
+<style scoped>
+  .experience {
+      background-color: var(--bg-secondary);
+  }
+
+  .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: var(--spacing-lg);
+  }
+
+  .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--border);
+  }
+
+  .timeline__item {
+      position: relative;
+      margin-bottom: var(--spacing-lg);
+      padding-left: var(--spacing-md);
+  }
+
+  .timeline__marker {
+      position: absolute;
+      left: -9px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      border: 3px solid var(--bg-secondary);
+  }
+
+  .timeline__content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+  }
+
+  .timeline__content h4 {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+  }
+
+  .timeline__date {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: var(--spacing-sm);
+  }
+
+  .timeline__content ul {
+      list-style: none;
+      margin-top: var(--spacing-sm);
+  }
+
+  .timeline__content li {
+      color: var(--text-secondary);
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+  }
+
+  .timeline__content li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+  }
+</style>

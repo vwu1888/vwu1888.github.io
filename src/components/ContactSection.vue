@@ -26,6 +26,55 @@
   </section>
 </template>
 
-<script setup lang="ts">
-// No script needed!
-</script>
+<script setup lang="ts"></script>
+
+<style scoped>
+.contact__content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact__description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact__links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .contact__links {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.contact__link:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.contact__icon {
+  font-size: 1.5rem;
+}
+</style>

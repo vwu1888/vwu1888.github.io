@@ -125,3 +125,135 @@ const handleImageError = (e: Event) => {
   }
 }
 </script>
+
+<style scoped>
+.project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .project {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project--featured {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.project__tag {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.project__title {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.project__description {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+}
+
+.project__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  list-style: none;
+  margin-bottom: var(--spacing-md);
+}
+
+.project__tech li {
+  background-color: var(--code-bg);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.project__links {
+  margin-bottom: var(--spacing-md);
+}
+
+.project__link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.project__link:hover {
+  transform: translateX(5px);
+}
+
+.project__note {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.project__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.project__placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--border) 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Subsections */
+.project__subsections {
+  margin-top: var(--spacing-md);
+}
+
+.subsection {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.subsection:hover {
+  border-color: var(--accent);
+}
+
+.subsection summary {
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  user-select: none;
+}
+
+.subsection p {
+  margin-top: var(--spacing-sm);
+  color: var(--text-secondary);
+}
+</style>
