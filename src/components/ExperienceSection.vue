@@ -12,7 +12,17 @@
           <div class="timeline__marker"></div>
           <div class="timeline__content">
             <h3>{{ item.title }}</h3>
-            <h4>{{ item.company }}</h4>
+            <h4>
+              <a
+                v-if="item.companyUrl"
+                :href="item.companyUrl"
+                target="_blank"
+                class="company-link"
+              >
+                {{ item.company }}
+              </a>
+              <span v-else>{{ item.company }}</span>
+            </h4>
             <span class="timeline__date">{{ item.date }}</span>
             <ul>
               <li v-for="(responsibility, idx) in item.responsibilities" :key="idx">
@@ -31,18 +41,9 @@ import type { ExperienceItem } from '@/types'
 
 const experiences: ExperienceItem[] = [
   {
-    title: 'Mechatronics Engineer Intern',
-    company: 'Volvo Group',
-    date: 'May 2025 - Aug 2025',
-    responsibilities: [
-      'Designed automated system for trailer setup using Simulink and Speedgoat',
-      'Created custom UI with Next.js and Flask',
-      'Interfaced with CAN bus networks and existing hardware systems'
-    ]
-  },
-  {
     title: 'Electronics Junior Lead',
     company: 'Pack Motorsports Baja SAE',
+    companyUrl: 'https://www.ncstatebaja.com/',
     date: 'Sept 2024 - Present',
     responsibilities: [
       'Leading development of custom data acquisition system',
@@ -53,6 +54,18 @@ const experiences: ExperienceItem[] = [
   {
     title: 'Mechatronics Engineer Intern',
     company: 'Volvo Group',
+    companyUrl: 'https://www.volvogroup.com/',
+    date: 'May 2025 - Aug 2025',
+    responsibilities: [
+      'Designed automated system for trailer setup using Simulink and Speedgoat',
+      'Created custom UI with Next.js and Flask',
+      'Interfaced with CAN bus networks and existing hardware systems'
+    ]
+  },
+  {
+    title: 'Mechatronics Engineer Intern',
+    company: 'Volvo Group',
+    companyUrl: 'https://www.volvogroup.com/',
     date: 'May 2024 - Aug 2024',
     responsibilities: [
       'Developed traction features involving airbag suspension',
@@ -63,6 +76,7 @@ const experiences: ExperienceItem[] = [
   {
     title: 'Undergraduate Research Assistant',
     company: 'AERPAW',
+    companyUrl: 'https://aerpaw.org/',
     date: 'Jan 2024 - May 2024',
     responsibilities: [
       'Assembled electrical systems for rover-type wireless communication testbed',
@@ -72,6 +86,7 @@ const experiences: ExperienceItem[] = [
   {
     title: 'Engineering Captain',
     company: 'YETI Robotics',
+    companyUrl: 'https://www.yetirobotics.org/',
     date: 'Dec 2022 - Jul 2023',
     responsibilities: [
       'Led 60-person engineering team to FRC World Championships',
@@ -131,6 +146,18 @@ const experiences: ExperienceItem[] = [
       color: var(--accent);
       font-weight: 600;
       margin-bottom: 0.5rem;
+  }
+
+  .company-link {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+      border-bottom: 2px solid transparent;
+  }
+
+  .company-link:hover {
+      color: var(--accent-hover);
+      border-bottom-color: var(--accent-hover);
   }
 
   .timeline__date {

@@ -22,6 +22,7 @@ export interface ProjectSubsection {
 export interface ExperienceItem {
   title: string
   company: string
+  companyUrl?: string  // Add this optional field
   date: string
   responsibilities: string[]
 }
