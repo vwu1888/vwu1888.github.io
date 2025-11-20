@@ -17,7 +17,11 @@
         <div class="project__content">
           <span v-if="project.tag" class="project__tag">{{ project.tag }}</span>
           <h3 class="project__title">{{ project.title }}</h3>
-          <p v-if="project.description" class="project__description" v-html="project.description"></p>
+          <p
+            v-if="project.description"
+            class="project__description"
+            v-html="project.description"
+          ></p>
           <ul class="project__tech">
             <li v-for="tech in project.technologies" :key="tech">{{ tech }}</li>
           </ul>
@@ -43,8 +47,12 @@
                 <div v-else class="subsection__placeholder">Image Coming Soon</div>
               </div>
 
-              <summary>{{ subsection.title }}</summary>
-              <p>{{ subsection.description }}</p>
+              <summary class="subsection__title">{{ subsection.title }}</summary>
+              <p
+                v-if="subsection.description"
+                class="subsection__description"
+                v-html="subsection.description"
+              ></p>
 
               <div v-if="subsection.imagePosition === 'bottom'" class="subsection__image">
                 <img
@@ -92,20 +100,20 @@ const projects: Project[] = [
       {
         title: 'Engine RPM Sensor',
         description:
-          'Custom piezo-based sensor for engine speed measurement in harsh racing conditions.',
+          'Custom piezo-based sensor for engine speed measurement in harsh racing conditions. Vibration from the enginer combustion cycle is captured and processed to produce accurate RPM readings.',
         imageSrc: '/images/projects/engRPM.jpg',
         imagePosition: 'bottom',
       },
       {
         title: 'Suspension Hall Effect Sensor',
-        description: 'Real-time suspension travel monitoring using hall effect sensors.',
+        description: 'Real-time suspension travel monitoring using hall effect sensors. Mounted on the a-arms to measure displacement of the suspension.',
         imageSrc: '/images/projects/hallEffectPCB.png',
         imagePosition: 'top',
       },
       {
         title: 'MDF4 Logging System',
         description:
-          'Industry-standard data logging implementation for comprehensive vehicle telemetry (In Development).',
+          'Industry-standard data logging implementation for comprehensive vehicle telemetry. Written in Python with Flask backend. Image shows a log visualized using <a href="https://asammdf.readthedocs.io/en/latest/" target="_blank">asammdf</a>.',
         imageSrc: '/images/projects/MDF4Log.png',
         imagePosition: 'top',
       },
@@ -277,16 +285,29 @@ const projects: Project[] = [
   border-color: var(--accent);
 }
 
-.subsection summary {
+.subsection__title {
   font-weight: 600;
   color: var(--accent);
   cursor: pointer;
   user-select: none;
 }
 
-.subsection p {
+.subsection__description {
   margin-top: var(--spacing-sm);
   color: var(--text-secondary);
+}
+
+.subsection__description :deep(a) {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+
+.subsection__description :deep(a):hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
 }
 
 .subsection__image img {
