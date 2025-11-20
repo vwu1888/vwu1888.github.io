@@ -86,22 +86,28 @@ const projects: Project[] = [
       'Full-Stack Development',
     ],
     githubUrl: 'https://github.com/wmBaja/PCB-Design',
+    imageSrc: '/images/projects/bajaDAQ.jpg',
     imagePosition: 'left',
     subsections: [
       {
         title: 'Engine RPM Sensor',
         description:
           'Custom piezo-based sensor for engine speed measurement in harsh racing conditions.',
+        imageSrc: '/images/projects/engRPM.jpg',
         imagePosition: 'bottom',
       },
       {
         title: 'Suspension Hall Effect Sensor',
         description: 'Real-time suspension travel monitoring using hall effect sensors.',
+        imageSrc: '/images/projects/hallEffectPCB.png',
+        imagePosition: 'top',
       },
       {
         title: 'MDF4 Logging System',
         description:
           'Industry-standard data logging implementation for comprehensive vehicle telemetry (In Development).',
+        imageSrc: '/images/projects/MDF4Log.png',
+        imagePosition: 'top',
       },
     ],
   },
@@ -113,6 +119,7 @@ const projects: Project[] = [
       'Physical volume mixer for Windows applications. Forked the open-source <a href="https://github.com/omriharel/deej" target="_blank">deej</a> project and developed custom Arduino firmware to handle multiple encoders, buttons, and LEDs for per-application audio and media control.',
     technologies: ['Arduino/C++', 'Hardware Integration', 'Windows API', 'CAD'],
     githubUrl: 'https://github.com/vwu1888/deej',
+    imageSrc: '/images/projects/deejMediaBox.jpg',
     imagePosition: 'right',
   },
   {
@@ -122,6 +129,7 @@ const projects: Project[] = [
     description:
       'Digital logic design final project featuring frame-based animation system. Built with discrete logic components, EEPROM frame storage, and switch-based playback controls. Demonstrates fundamental understanding of digital circuits and memory interfacing.',
     technologies: ['Digital Logic', 'EEPROM', 'Circuit Design', 'Breadboard Prototyping'],
+    imageSrc: '/images/projects/ledMatrix.gif',
     imagePosition: 'left',
   },
 ]
@@ -284,8 +292,9 @@ const projects: Project[] = [
 .subsection__image img {
   width: 100%;
   height: auto;
-  margin: var(--spacing-sm);
   border-radius: 6px;
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
   box-shadow: 0 2px 10px var(--shadow);
 }
 
