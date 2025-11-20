@@ -37,6 +37,7 @@
               v-for="subsection in project.subsections"
               :key="subsection.title"
               class="subsection"
+              @toggle="handleSubsectionToggle"
             >
               <div v-if="subsection.imagePosition === 'top'" class="subsection__image">
                 <img
@@ -142,6 +143,21 @@ const projects: Project[] = [
     imagePosition: 'left',
   },
 ]
+
+const handleSubsectionToggle = (event: Event) => {
+  const details = event.target as HTMLDetailsElement
+
+  // Only scroll when opening
+  if (details.open) {
+    // Wait for the animation to complete before scrolling
+    setTimeout(() => {
+      details.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }, 100) // Small delay to let the content expand
+  }
+}
 </script>
 
 <style scoped>
@@ -274,7 +290,7 @@ const projects: Project[] = [
 }
 
 details {
-  inline-size: 50ch;
+  inline-size: 100%;
 
   @media (prefers-reduced-motion: no-preference) {
     interpolate-size: allow-keywords;
@@ -303,6 +319,7 @@ details {
   margin-bottom: var(--spacing-sm);
   cursor: pointer;
   transition: var(--transition);
+  scroll-margin-top: 200px;
 }
 
 .subsection:hover {
