@@ -77,6 +77,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Project } from '@/types'
 
 const projects: Project[] = [
@@ -144,18 +145,37 @@ const projects: Project[] = [
   },
 ]
 
+const openSubsection = ref<HTMLDetailsElement | null>(null)
+
 const handleSubsectionToggle = (event: Event) => {
   const details = event.target as HTMLDetailsElement
 
-  // Only scroll when opening
   if (details.open) {
-    // Wait for the animation to complete before scrolling
-    setTimeout(() => {
-      details.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }, 100) // Small delay to let the content expand
+    const elementToScroll = details
+
+    if (openSubsection.value && openSubsection.value !== details) {
+      openSubsection.value.open = false
+
+      setTimeout(() => {
+        elementToScroll.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }, 400)
+    } else {
+      setTimeout(() => {
+        elementToScroll.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }, 100)
+    }
+
+    openSubsection.value = details
+  } else {
+    if (openSubsection.value === details) {
+      openSubsection.value = null
+    }
   }
 }
 </script>
@@ -319,7 +339,7 @@ details {
   margin-bottom: var(--spacing-sm);
   cursor: pointer;
   transition: var(--transition);
-  scroll-margin-top: 200px;
+  scroll-margin-top: 10rem;
 }
 
 .subsection:hover {
