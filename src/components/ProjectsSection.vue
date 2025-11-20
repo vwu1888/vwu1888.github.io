@@ -10,18 +10,14 @@
         :class="{ 'project--featured': project.featured }"
       >
         <div v-if="project.imagePosition === 'left'" class="project__image">
-          <img
-            v-if="project.imageSrc"
-            :src="project.imageSrc"
-            :alt="project.title"
-          />
+          <img v-if="project.imageSrc" :src="project.imageSrc" :alt="project.title" />
           <div v-else class="project__placeholder">Image Coming Soon</div>
         </div>
 
         <div class="project__content">
           <span v-if="project.tag" class="project__tag">{{ project.tag }}</span>
           <h3 class="project__title">{{ project.title }}</h3>
-          <p class="project__description">{{ project.description }}</p>
+          <p v-if="project.description" class="project__description" v-html="project.description"></p>
           <ul class="project__tech">
             <li v-for="tech in project.technologies" :key="tech">{{ tech }}</li>
           </ul>
@@ -50,10 +46,7 @@
               <summary>{{ subsection.title }}</summary>
               <p>{{ subsection.description }}</p>
 
-              <div
-                v-if="subsection.imagePosition === 'bottom'"
-                class="subsection__image"
-              >
+              <div v-if="subsection.imagePosition === 'bottom'" class="subsection__image">
                 <img
                   v-if="subsection.imageSrc"
                   :src="subsection.imageSrc"
@@ -66,11 +59,7 @@
         </div>
 
         <div v-if="project.imagePosition === 'right'" class="project__image">
-          <img
-            v-if="project.imageSrc"
-            :src="project.imageSrc"
-            :alt="project.title"
-          />
+          <img v-if="project.imageSrc" :src="project.imageSrc" :alt="project.title" />
           <div v-else class="project__placeholder">Image Coming Soon</div>
         </div>
       </article>
@@ -87,7 +76,7 @@ const projects: Project[] = [
     featured: true,
     title: 'Baja SAE Data Acquisition System',
     description:
-      "Leading the development and integration of a custom DAQ system for Pack Motorsports' off-road racing vehicle. Designing sensors, fabricating wiring harnesses, and managing concurrent projects across multiple subsystems.",
+      "Leading the development and integration of a custom DAQ system for <a href='https://www.ncstatebaja.com/' target='_blank'>Pack Motorsports</a>' off-road racing vehicle. Designing sensors, fabricating wiring harnesses, and managing concurrent projects across multiple subsystems.",
     technologies: [
       'KiCAD PCB Design',
       'Embedded C',
@@ -121,7 +110,7 @@ const projects: Project[] = [
     featured: false,
     title: 'Custom Media Control Box',
     description:
-      'Physical volume mixer for Windows applications. Forked the open-source deej project and developed custom Arduino firmware to handle multiple encoders, buttons, and LEDs for per-application audio and media control.',
+      'Physical volume mixer for Windows applications. Forked the open-source <a href="https://github.com/omriharel/deej" target="_blank">deej</a> project and developed custom Arduino firmware to handle multiple encoders, buttons, and LEDs for per-application audio and media control.',
     technologies: ['Arduino/C++', 'Hardware Integration', 'Windows API', 'CAD'],
     githubUrl: 'https://github.com/vwu1888/deej',
     imagePosition: 'right',
@@ -136,7 +125,6 @@ const projects: Project[] = [
     imagePosition: 'left',
   },
 ]
-
 </script>
 
 <style scoped>
@@ -169,9 +157,24 @@ const projects: Project[] = [
 }
 
 .project__description {
+  font-size: 1.1rem;
   color: var(--text-secondary);
   margin-bottom: var(--spacing-md);
   line-height: 1.7;
+}
+
+/* Style links within description */
+.project__description :deep(a) {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+
+.project__description :deep(a):hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
 }
 
 .project__tech {
