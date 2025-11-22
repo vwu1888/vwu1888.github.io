@@ -15,11 +15,14 @@ export interface Project {
 export interface ProjectSubsection {
   title: string
   description: string
+  imageSrc?: string
+  imagePosition?: 'top' | 'bottom'
 }
 
 export interface ExperienceItem {
   title: string
   company: string
+  companyUrl?: string  // Add this optional field
   date: string
   responsibilities: string[]
 }
