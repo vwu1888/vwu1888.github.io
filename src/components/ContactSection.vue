@@ -20,6 +20,17 @@
           </a>
 
           <a
+            href="/resume.pdf"
+            class="contact__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Resume"
+            title="Resume">
+            <img src="/icons/resume.svg" alt="Resume" class="contact__icon" />
+            <span class="contact__text">Resume</span>
+          </a>
+
+          <a
             href="https://www.linkedin.com/in/vincentjwu/"
             class="contact__link"
             target="_blank"
@@ -74,7 +85,7 @@ const copyEmail = (event: MouseEvent) => {
 
 <style scoped>
 .contact__content {
-  max-width: 750px;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
